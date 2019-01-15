@@ -42,3 +42,4 @@ percolate:synced-cron
 mrt:mongodb-aggregation
 mikowals:batch-insert
 nimble:restivus
+okgrow:analytics

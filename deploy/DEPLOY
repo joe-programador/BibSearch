@@ -1,0 +1,15 @@
+meteor build [Path] 
+
+
+Install mvn 
+node version 5.12.0
+npm version 3.8.6
+
+tar -xzvf sparql-fedquest2.tar.gz
+
+programs/server/ -> npm install
+
+Problems? 
+sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
+
+ini.sh
