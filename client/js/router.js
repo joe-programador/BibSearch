@@ -34,6 +34,7 @@ this.Router = Backbone.Router.extend({
       'buscador/help':'help' ,
  //   'search/:lan':'search2',
     '': 'index',
+    'buscador/': 'index'
    // ':lan': 'index',
   }, indexv : function (){
     window.open('/en','_self');

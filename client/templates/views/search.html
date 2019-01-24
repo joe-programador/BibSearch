@@ -269,18 +269,22 @@ el proceso en la publicación de LOD. </p>
 			<div class="Ficha "> 
 				<div class="colu-1"  style="margin-bottom: 15px;">
 				<!--	<img src="imagenHTML.jpg" border="0" width="10" height="10">-->
-							<div class="thumb thumb-in-list">
+							<div class="thumb thumb-in-list" id="{{typeResource}}">
 										<div class="ntwrk-name">
-											{{Origin}}
+										<!--	{{Origin}}-->
+										        {{Source}}
+
 											<!--<span class="{{Icon}}"></span>-->
 										</div>
 										<div class="format">
 											<div class="format-misc">
-												<img src="{{Image}}" width="50px" height="58px">
+												<img src="{{Image}}"  height="60px">
 
 											</div>
+											<br>
 											<span>
-												{{Source}}
+
+												<!--{{typeResource}}-->
 											</span>
 											<div>
 												<a href="#" title="QR Code" class="qricon" datauri ="{{URI}}"  onclick="qrmodalshow('{{URI}}','{{Origin}}','{{Icon}}');"   ><img src="/buscador/images/qr2.png" width=20px ></a>

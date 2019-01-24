@@ -2359,11 +2359,13 @@ if (Meteor.isClient) {
                         case 'http://xmlns.com/foaf/0.1/Person':
                             OneResult.Icon = 'glyphicon glyphicon-user';
                             OneResult.Image='/buscador/images/personIcon.png'
+                            OneResult.typeResource = OneResult.Type.split("/").pop();
                             break;
                         case 'http://purl.org/ontology/bibo/Collection':
                             OneResult.Icon = 'glyphicon glyphicon-folder-open';
-                            OneResult.Image='/buscador/images/CollectionIcon.png'
-
+                           // OneResult.Image='/buscador/images/CollectionIcon.png'
+                            OneResult.Image='/buscador/images/datacollection.png'
+                            OneResult.typeResource = OneResult.Type.split("/").pop();
                             break;
                        case 'http://xmlns.com/foaf/0.1/Organization':
                                 OneResult.Icon = 'glyphicon glyphicon-folder-open';
@@ -2378,6 +2380,7 @@ if (Meteor.isClient) {
                         default :
                             OneResult.Icon = 'glyphicon glyphicon-file';
                             OneResult.Image='/buscador/images/documentIcon.png'
+                            OneResult.typeResource = OneResult.Type.split("/").pop();
 
                             break;
                     }

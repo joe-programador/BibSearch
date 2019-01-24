@@ -140,7 +140,7 @@
     position: relative;
     top:5px;
     /*background-color: #0083e3;*/
-    background-color:rgba(0, 131, 227, 0.68);
+   /* background-color:rgba(0, 131, 227, 0.68);*/
     width: 110px;
     max-widht: 100px;
     margin: auto;
@@ -149,6 +149,25 @@
     opacity: .9;
     min-height: 90px;
 }
+
+.thumb#Person{
+
+    background-color:rgba(174, 121, 249, 0.48);
+}
+
+.thumb#Document{
+
+    background-color:rgba(107, 154, 249, 0.6);
+}
+
+.thumb#Collection{
+
+   background-color:rgba(108, 224, 215, 0.6);
+}
+
+
+
+
 .ntwrk-name {
     text-align: center;
     position: relative;
@@ -156,7 +175,8 @@
     max-widht: 100px;
     text-transform: uppercase;
     background-color: #101010;
-    color: rgba(0, 131, 227, 0.68);
+    /*color: rgba(0, 131, 227, 0.68);*/
+     color:white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     line-height: 15px;

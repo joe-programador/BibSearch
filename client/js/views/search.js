@@ -699,7 +699,39 @@ function sleep() {
 function isRec(d) {
  return  d.includes('rec');
 }
+
 linkg2 = function (e) {
+    var obj = e.target;
+    if (obj.tagName == "SPAN") {
+        obj = obj.parentElement;
+    }
+    var en = Endpoints.find({name: obj.attributes['data-endpoint'].value}).fetch()[0];
+    var v1 = obj.attributes['data-uri'].value;
+    var v2 = en.endpoint;
+    var v3 = en.graphURI;
+    console.log ("FUentes:");
+    console.log (v1);
+     var redirectWindow = window.open('', '_blank');
+            Meteor.call('runQuery', v2, v3, 'select ?a {<' + v1 + '> <http://purl.org/ontology/bibo/handle> ?a} limit 1', function (error, result) {
+                if (result) {
+                    var r = JSON.parse(result.content).results.bindings;
+                        console.log ("Resp:");
+                        console.log (r);
+                    if (r.length == 0) {
+                        redirectWindow.location = v1;
+                    } else {
+                        redirectWindow.location = r[0].a.value;
+                    }
+                } else {
+                    redirectWindow.location = v1;
+                }
+            }
+          );
+        
+    interestitem(v1);
+};
+//RESPALDO FUNCION FUENTE
+linkg2_bck = function (e) {
     var obj = e.target;
     if (obj.tagName == "SPAN") {
         obj = obj.parentElement;

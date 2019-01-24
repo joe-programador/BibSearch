@@ -1870,7 +1870,7 @@ Api.addRoute('sparql', {authRequired: false}, {
             },  queryRecomendedItems: function (uri) {
                 console.log ("Query");
 
-                var res = HTTP.get('http://172.16.244.202:8080/sld/Query', 
+                var res = HTTP.get('http://localhost:8181/sld/Query', 
                         {
                             'params':
                                     {
