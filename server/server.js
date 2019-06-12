@@ -748,7 +748,7 @@ var num_auto=0;
         Cache._ensureIndex({'keyl': 1});
 
         Cache._ensureIndex({'key': 1, 'nresult':1});
-        Cache._ensureIndex({'ttl_date': 1}, {'expireAfterSeconds':1209600});
+        Cache._ensureIndex({'ttl_date': 1}, {'expireAfterSeconds':3600 * 5});
         Cache._ensureIndex({'queue': 1,'qord':-1});
         Cache._ensureIndex({'queue': 1});
 
@@ -1445,6 +1445,7 @@ Api.addRoute('sparql', {authRequired: false}, {
                         if (0 == k.length) {
                             cacheo = true;
                             l = Meteor.call("runQuery", i.endpoint, i.graphURI, a.sparql, undefined, g,i.typeServer);
+                            //console.log('PRINTtypeserversL'+a.sparql);
                             //console.log('PRINTtypeserversL'+l.content);
                             var m = JSON.parse(l.content);
                             if (c) {
@@ -1890,17 +1891,20 @@ Api.addRoute('sparql', {authRequired: false}, {
                 //return HTTP.get(endpointURI,
                 var result;
                 console.log('marmotta tipo servers'+ typeServer);
-
+                typeServer='Fuseki';
                 switch(typeServer) {
                   case "Fuseki":
                       result= HTTP.post(endpointURI,
                         {
+                             headers: {
+                                "Accept": "application/sparql-results+json,*/*;q=0.9"                            
+                            },
                             'params':
                                     {
-                                        'default-graph-uri': defaultGraph,
-                                        'query': query,
-                                        'format': format,
-                                        'timeout': timeout
+                                        //'default-graph-uri': defaultGraph,
+                                        'query': query
+                                        //'format': format,
+                                        //'timeout': timeout
                                     }
                         });
                         break;
@@ -1964,7 +1968,6 @@ Api.addRoute('sparql', {authRequired: false}, {
 
                    break;
                 }
-
                 return result;
             }, runQueryGet: function (endpointURI, defaultGraph, query, format, timeout) {
                 format = _.isUndefined(format) ? 'application/sparql-results+json' : format;
@@ -1986,11 +1989,15 @@ Api.addRoute('sparql', {authRequired: false}, {
                 console.log('Consulta' + endpointURI + '+' + query + '+' + format+' '+typeServer);
                 // return HTTP.get(endpointURI,
                 var result;
-
+                typeServer ="Fuseki";
                 switch(typeServer) {
                   case "Fuseki":
                       result= HTTP.post(endpointURI,
                         {
+                            headers: {
+                                "Accept": "application/ld+json"    
+                            },
+
                             'params':
                                     {
                                         'default-graph-uri': defaultGraph,
