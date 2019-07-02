@@ -545,7 +545,7 @@ this.SearchView = Backbone.View.extend({
 
       Query += "      ?search a inst:indexdx ;";
       Query += "      :query ?stx ;";
-      Query += "      :limit '500' ;";
+      Query += "      :limit '100' ;";
 
       Query += "      :entities ?EntityURI .";
       Query += "      ?EntityURI :score ?Score .";
@@ -1082,7 +1082,8 @@ download = function (URI) {
 
 downloadaction = function (e) {
   var formatcod = $("select[id=format]").val();
-  var uri = $("#mydwmodal").attr("URI");
+  var uri = $("#mydwmodal").attr("URI")
+          .replace('http://bibliobuscador.ucuenca.edu.ec/dataset/','https://bibliobuscador.ucuenca.edu.ec/dataset/data/');
   var formatext = "";
 
   switch (formatcod)
@@ -1091,15 +1092,8 @@ downloadaction = function (e) {
       formatext = "xml";
       break;
     case '1':
-      formatext = "text";
+      formatext = "ttl";
       break;
-    case '2':
-      formatext = "json";
-      break;
-    case '3':
-      formatext = "rdf";
-      break;
-
   }
 
   // alert (uri+"."+formatext);
@@ -1110,7 +1104,7 @@ downloadaction = function (e) {
    });*/
 
   var request = new XMLHttpRequest();
-  request.open("GET", uri + "." + formatext);
+  request.open("GET", uri + "?output=" + formatext);
   // request.open("GET", 'http://localhost:3000/stats');
 
   request.onreadystatechange = function () {
